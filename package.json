@@ -1,0 +1,16 @@
+{
+  "name": "safe-catch",
+  "version": "1.0.10",
+  "description": "",
+  "main": "dist/index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "build": "rm -rf dist && tsc"
+  },
+  "dependencies": {
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.3"
+  }
+}
