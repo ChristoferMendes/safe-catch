@@ -39,7 +39,7 @@ example();
 
 
 
-In the example above, `tryCatchPromise` is used to handle the asynchronous operation `fetchData()`. It returns a tuple `[data, error]`, where `data` contains the result of the successful operation or `null` if an error occurred, and `error` contains the error object or `null` if the operation was successful.
+In the example above, `tryCatchPromise` is used to handle the asynchronous operation `fetchData()`. It returns a tuple `[result, error]`, where `result` contains the result of the successful operation or `null` if an error occurred, and `error` contains the error object or `null` if the operation was successful.
 ### `tryCatchFunction`
 
 The `tryCatchFunction` is designed for handling errors in synchronous functions.
