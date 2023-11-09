@@ -1,4 +1,3 @@
-import { tryCatchFunction } from "./src/tryCatchFunction";
-import { tryCatchPromise } from "./src/tryCatchPromise";
-
-export { tryCatchFunction, tryCatchPromise };
+export { tryCatchFunction } from "./src/tryCatchFunction";
+export { tryCatchPromise } from "./src/tryCatchPromise";
+export { hasError } from "./src/hasError";
