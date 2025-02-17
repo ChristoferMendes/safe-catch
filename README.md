@@ -17,21 +17,20 @@ The `tryCatchPromise` function is designed for handling errors in asynchronous o
 
 ```typescript
 /* imports... */
-import { tryCatchPromise } from "safe-catch";
+import { tryCatchPromise, hasError } from "safe-catch";
 
 function fetchData() {
     return axios.get('https://jsonplaceholder.typicode.com/todos/1')
 }
 
 async function example() {
-  const [result, error] = await tryCatchPromise(fetchData());
+  const [error, result] = await tryCatchPromise(fetchData());
 
-  if (error) {
+  if (hasError(error, result)) {
     return console.error("An error occurred:", error);
-  } 
+  }
 
-  return console.log("Data fetched:", await result.data);
-  
+  return console.log("Data fetched:", result.data);
 }
 
 example();
@@ -46,7 +45,7 @@ The `tryCatchFunction` is designed for handling errors in synchronous functions.
 
 ```typescript
 
-import { tryCatchFunction } from "safe-catch";
+import { tryCatchFunction, hasError } from "safe-catch";
 
 function divide(a: number, b: number) {
   if (b === 0) {
@@ -57,9 +56,9 @@ function divide(a: number, b: number) {
 }
 
 function example() {
-  const [result, error] = tryCatchFunction(() => divide(10, 2));
+  const [error, result] = tryCatchFunction(() => divide(10, 2));
 
-  if (error) {
+  if (hasError(error, result)) {
     return console.log('Something went wrong :(', error)
   }
 
@@ -72,10 +71,10 @@ example();
 
 
 In the above example, `tryCatchFunction` wraps the synchronous function `divide`. It also returns a tuple `[result, error]`, where `result` contains the return value of the function if it executed successfully, or `null` if an error occurred. The `error` variable holds the error object or `null` if the function was executed without any errors.
-## Benefits of Using SafeCatch 
-1. **Code Simplicity:**  By encapsulating the try-catch logic within the utility functions, `SafeCatch` eliminates the need for writing repetitive and verbose try-catch blocks. This leads to cleaner and more readable code. 
+## Benefits of Using SafeCatch
+1. **Code Simplicity:**  By encapsulating the try-catch logic within the utility functions, `SafeCatch` eliminates the need for writing repetitive and verbose try-catch blocks. This leads to cleaner and more readable code.
 2. **Type Safety**: Built with TypeScript, SafeCatch leverages the static typing capabilities of the language. The utility functions tryCatchPromise and tryCatchFunction allow developers to define the expected return types and error types explicitly. This enables better type checking at compile-time, reducing the chances of runtime errors and providing enhanced code reliability.
-3. **Reduced Boilerplate:**  The library handles the error handling boilerplate code, such as creating try-catch blocks and checking for errors. This allows developers to focus on the core logic of their functions, resulting in more concise and maintainable code. 
+3. **Reduced Boilerplate:**  The library handles the error handling boilerplate code, such as creating try-catch blocks and checking for errors. This allows developers to focus on the core logic of their functions, resulting in more concise and maintainable code.
 4. **Consistent Error Handling:**  `SafeCatch` promotes a consistent approach to error handling across asynchronous and synchronous code. It provides a uniform way to handle errors, making the codebase easier to understand and maintain.
 ## Conclusion
 
